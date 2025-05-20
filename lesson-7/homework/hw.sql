@@ -109,7 +109,6 @@ ORDER BY
     custid;
 
 24.
-
 SELECT
     YEAR (OrderDate) AS SalesYear,
     MONTH (OrderDate) AS SalesMonth,
