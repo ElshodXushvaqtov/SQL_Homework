@@ -16,8 +16,8 @@ select ProductName from Products
 where ProductName like '%er';
 
 5.
-select FirstName+' '+LastName as FullName,City from Customers
-where City like '%A';
+select FirstName+' '+LastName as FullName,Country from Customers
+where Country like '%A';
 
 6.
 select top (1) ProductName, Price from Products
@@ -27,7 +27,7 @@ order by Price desc;
 select *, case when StockQuantity < 30 then 'Low Stock' else 'Sufficient' end as Stock_Status from Products; 
 
 8.
-select Country, sum(CustomerID) as Total_Customers from Customers
+select Country, count(CustomerID) as Total_Customers from Customers
 group by Country;
 
 9.
@@ -37,13 +37,8 @@ SELECT
 FROM Orders;
 
 10.
-SELECT
-    CustomerID,
-    OrderDate
-FROM
-    Orders
-WHERE
-    OrderDate >= '2023-01-01' AND OrderDate < '2023-02-01';
+SELECT DISTINCT o.CustomerID FROM Orders AS o
+WHERE o.OrderDate >= '2023-01-01' AND o.OrderDate < '2023-02-01' AND o.CustomerID NOT IN (SELECT DISTINCT CustomerID FROM Invoices);
 
 11.
 select ProductName from Products
